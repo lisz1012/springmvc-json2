@@ -18,7 +18,6 @@ public class EntityController {
 		return "success";
 	}
 
-
 	@RequestMapping("/testResponseEntity")
 	public ResponseEntity<String> testResponseEntity(){
 		String str = "<h1>Hello Spring MVC</h1>";
