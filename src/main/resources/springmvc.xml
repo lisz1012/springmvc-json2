@@ -11,4 +11,13 @@
     </bean>
     <mvc:default-servlet-handler />
     <mvc:annotation-driven />
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="maxUploadSize" value="1024000" />
+    </bean>
+    <!-- Interceptor的执行顺序跟这里放置的顺序是一样的，@Order不起作用 -->
+    <mvc:interceptors>
+        <bean class="com.lisz.interceptor.MyInterceptor2" />
+        <bean class="com.lisz.interceptor.MyInterceptor" />
+    </mvc:interceptors>
 </beans>

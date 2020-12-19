@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<%
+    System.out.println("页面开始执行");
+%>
 <head>
     <title>Title</title>
 </head>
