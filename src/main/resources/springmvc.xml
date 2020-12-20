@@ -20,4 +20,8 @@
         <bean class="com.lisz.interceptor.MyInterceptor2" />
         <bean class="com.lisz.interceptor.MyInterceptor" />
     </mvc:interceptors>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="login"></property>
+    </bean>
+    <bean id="localeResolver" class="com.lisz.MyLocaleResolver" />
 </beans>
