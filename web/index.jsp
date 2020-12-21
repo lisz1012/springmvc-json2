@@ -14,7 +14,8 @@
     <title>$Title$</title>
   </head>
   <body>
-    <a href="${ctp}/i18n">国际化页面</a>
-    <a href="${ctp}/exception1">触发异常</a>
+    <a href="${ctp}/i18n">国际化页面</a><br />
+    <a href="${ctp}/exception1">触发异常</a><br />
+    <a href="${ctp}/exception2">触发异常2</a><br />
   </body>
 </html>

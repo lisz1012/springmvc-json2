@@ -1,0 +1,19 @@
+DispatcherServlet类中：
+Springmvc - 5 的 1：55：00
+
+HandlerMapping是用来处理三种不同的Controller定义的：
+1。@Controller
+2。实现HttpRequestHandler
+3。实现Controller接口
+
+处理不同定义方式的机制不同
+
+HandlerAdapter：
+适配器决定对方法不同的处理
+
+从multipartResolver开始的九大组件搞清楚，springmvc就理解了
+
+DispatcherServlet类中的initStrategies方法就把这九大组件全部初始化了
+重点关注doDispatch的DispatcherServlet类中的方法
+Spring的AbstractApplicationContext.refresh()方法会在springmvc模块之前被调用到，初始化beans。SpringMVC应用本质上也是Spring应用,
+只不过多了一些WebContext上下文的初始化和创建过程，在此过程中会进行spring整体的onRefresh()

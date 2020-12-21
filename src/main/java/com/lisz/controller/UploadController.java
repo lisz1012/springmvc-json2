@@ -10,7 +10,7 @@ import java.io.File;
 @Controller
 public class UploadController {
 
-	// 要确保 commons-fileupload 和 commons-io要在pom文件中:
+	// 要确保 commons-fileupload 和 commons-io 这两个依赖在pom文件中:
 	/* <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 	        <property name="defaultEncoding" value="UTF-8" />
 	        <property name="maxUploadSize" value="1024000" />
