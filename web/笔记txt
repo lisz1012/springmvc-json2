@@ -17,3 +17,6 @@ DispatcherServlet类中的initStrategies方法就把这九大组件全部初始�
 重点关注doDispatch的DispatcherServlet类中的方法
 Spring的AbstractApplicationContext.refresh()方法会在springmvc模块之前被调用到，初始化beans。SpringMVC应用本质上也是Spring应用,
 只不过多了一些WebContext上下文的初始化和创建过程，在此过程中会进行spring整体的onRefresh()
+
+读源码的时候，断点打在HttpServletBean.init()方法的第一行
+AbstractApplicationContext 的refresh方法给出了spring启动的大概顺序；进入publishEvent方法一会儿就能回到springmvc了
