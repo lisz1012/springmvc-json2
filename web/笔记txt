@@ -20,3 +20,5 @@ Spring的AbstractApplicationContext.refresh()方法会在springmvc模块之前�
 
 读源码的时候，断点打在HttpServletBean.init()方法的第一行
 AbstractApplicationContext 的refresh方法给出了spring启动的大概顺序；进入publishEvent方法一会儿就能回到springmvc了
+
+springmvc的九大组件中initHandlerMapping, initHandlerAdapters, initViewResolver用得多，看一下
