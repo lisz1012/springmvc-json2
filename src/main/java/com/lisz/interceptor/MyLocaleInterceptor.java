@@ -31,7 +31,7 @@ public class MyLocaleInterceptor implements HandlerInterceptor {
 				sessionLocaleResolver.setLocale(request, response, locale);
 			}
 		}
-		return true;
+		return true; // 要想继续，这里必须返回true
 	}
 
 	@Override

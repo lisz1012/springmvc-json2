@@ -22,3 +22,24 @@ Spring的AbstractApplicationContext.refresh()方法会在springmvc模块之前�
 AbstractApplicationContext 的refresh方法给出了spring启动的大概顺序；进入publishEvent方法一会儿就能回到springmvc了
 
 springmvc的九大组件中initHandlerMapping, initHandlerAdapters, initViewResolver用得多，看一下
+查看FrameworkServlet的doGet/doPost方法，会得到请求过来之后如何处理的机制
+previousLocaleContext和previousAttributes是在做跳转的时候保存以前的请求的
+WebUtils.isIncludeRequest()判断是不是jsp里的include请求，一般都不是
+一般是从DispatcherServlet的doDispatch开始看，但是这并不是最开始的地方，上面的文字说了一步步是怎么过来的，知道就行，并不是特别重要。可以把
+断点打到DispatcherServlet的doDispatch的第一行
+doDispatch:
+1. 检查当前请求是否是上传请求
+2. 根据request获取Handler，初始化的时候，HandlerMapping已经初始化了3个对应的处理器
+3. 根据Handler来获取Adapter，在初始化的环节，已经为HandlerAdapter初始化了3个对应的适配器
+4. 处理当前请求中的last modifier
+5. 执行具体处理，执行获取的拦截器的前置处理方法
+6. 使用适配器处理匹配到的Controller的指定方法
+7. 判断是不是异步处理，如果是的话返回，不是的话，继续往下处理
+8. 如果试图的名称的为空，那么设置默认的视图名
+9. 执行拦截器的后置处理方法。如果处理过程中出现异常，设置到DispatcherException
+10. 最核心的处理：processDispatchResult。将返回的结果进行处理：包括渲染页面，而且还包含异常的处理工作，因为可能有异常统一的页面
+11. 额外异常的相关处理
+12. 释放资源
+其中1-6是对请求的处理；8-10是对视图的处理
+
+Filter针对所有请求，而拦截器只是针对于某一个URL。Model，ModelMap，ModelAndView
