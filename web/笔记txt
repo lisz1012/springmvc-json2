@@ -53,3 +53,6 @@ AbstractApplicationContext的publishEvent方法回到了springmvc
 
 "redirect:"和"forward:"这种标记，在UrlBasedViewResolver中定义的。组装view 的URL成：/WEB-INF/page/xxx.jsp也是在这个类中做的
 springmvc的代码执行完了还有一段不可debug进去的代码，在里面关闭了socket连接
+
+得到某个类、参数、方法是否被某个Annotation注解了可以用：AnnotatedElementUtils.hasAnnotation(method, InitBinder.class);
+第一个参数可以是java.lang.reflect.Class, java.lang.reflect.Method, java.lang.reflect.Parameter
