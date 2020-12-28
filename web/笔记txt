@@ -50,3 +50,6 @@ ServletConfigPropertyValues：从web.xml中去寻找spring的配置文件，比�
 MvcNamespaceUtils.registerDefaultComponents
 
 AbstractApplicationContext的publishEvent方法回到了springmvc
+
+"redirect:"和"forward:"这种标记，在UrlBasedViewResolver中定义的。组装view 的URL成：/WEB-INF/page/xxx.jsp也是在这个类中做的
+springmvc的代码执行完了还有一段不可debug进去的代码，在里面关闭了socket连接
