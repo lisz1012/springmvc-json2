@@ -56,3 +56,18 @@ springmvc的代码执行完了还有一段不可debug进去的代码，在里面
 
 得到某个类、参数、方法是否被某个Annotation注解了可以用：AnnotatedElementUtils.hasAnnotation(method, InitBinder.class);
 第一个参数可以是java.lang.reflect.Class, java.lang.reflect.Method, java.lang.reflect.Parameter
+
+ModelAndViewContainer.defaultModel 就是一个 BindingAwareModelMap （Model、ModelMap） 类型的
+找到方法，遍历各种解析器（一共26-27个），选一个支持当前参数的来解析参数，如果需要类型转换，也在这里完成，然后用反射的方式，调用Controller的那个方法，
+并传入参数，然后把结果做一个返回
+
+ServletInvocableHandlerMethod.invokeForRequest方法是最核心的
+
+看不懂的代码先跳过。。。多看几遍这个东西就会了。
+构造方法一般不用怎么看。
+在Controller方法中，我们可能设置了Model或者ModelMap中的属性值，所以要在RequestMappingHandlerAdapter.getModelAndView方法中进行更新
+
+ModelAndView自己也持有一个Model对象，RequestMappingHandlerAdapter.getModelAndView()中的ModelAndView mav =
+new ModelAndView(mavContainer.getViewName(), model, mavContainer.getStatus());这一行，
+在创建ModelAndView的时候，会把参数model中的所有的attrubte都放到ModelAndView所持有的这个Model对象中去，也就是把两个Model合并，这就是为什么
+往Model和ModelAndView中设置属性结果是一样的（invokeHandlerMethod方法）
