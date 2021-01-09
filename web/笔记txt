@@ -71,3 +71,6 @@ ModelAndView自己也持有一个Model对象，RequestMappingHandlerAdapter.getM
 new ModelAndView(mavContainer.getViewName(), model, mavContainer.getStatus());这一行，
 在创建ModelAndView的时候，会把参数model中的所有的attrubte都放到ModelAndView所持有的这个Model对象中去，也就是把两个Model合并，这就是为什么
 往Model和ModelAndView中设置属性结果是一样的（invokeHandlerMethod方法）
+
+在SpringMVC 5以后的版本中，HandlerMethodArgumentResolverComposite.resolveArgument() 方法用来解析参数，她对参数寻找合适的resovler，
+比如@RequestParam 或者@PathVariable 的 resolver来解析。ha.handle()的时候选择AbstractHandlerMethodAdapter
